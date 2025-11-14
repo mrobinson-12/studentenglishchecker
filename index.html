@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student English Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>📝 Student English Checker</h1>
+            <p class="subtitle">Get instant feedback on your writing with AI-powered analysis</p>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+                🌙
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Draft Input Section -->
+            <section class="card draft-section">
+                <h2>Your Draft</h2>
+                <div class="draft-controls">
+                    <button id="uploadBtn" class="btn btn-secondary">📁 Upload .txt</button>
+                    <button id="downloadBtn" class="btn btn-secondary">💾 Download as .txt</button>
+                    <button id="clearBtn" class="btn btn-danger">🗑️ Clear Draft</button>
+                </div>
+                <textarea 
+                    id="draftInput" 
+                    placeholder="Paste or type your draft here...&#10;&#10;As you type, you'll see live statistics and feedback appear below."
+                    maxlength="50000"
+                ></textarea>
+                <input type="file" id="fileInput" accept=".txt" style="display: none;">
+            </section>
+
+            <!-- Live Analytics Section -->
+            <section class="card analytics-section">
+                <h2>📊 Writing Analytics</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Words</span>
+                        <span class="stat-value" id="wordCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Characters</span>
+                        <span class="stat-value" id="charCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Sentences</span>
+                        <span class="stat-value" id="sentenceCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Avg Sentence Length</span>
+                        <span class="stat-value" id="avgSentenceLength">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Longest Sentence</span>
+                        <span class="stat-value" id="longestSentence">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Reading Time</span>
+                        <span class="stat-value" id="readingTime">0m 0s</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spelling & Grammar Issues -->
+            <section class="card issues-section">
+                <h2>✏️ Spelling & Grammar Feedback</h2>
+                <div id="issuesSummary" class="issues-summary">
+                    Start typing to see feedback...
+                </div>
+                <div id="issuesList" class="issues-list"></div>
+            </section>
+
+            <!-- Word Frequency -->
+            <section class="card frequency-section">
+                <h2>📈 Most Common Words</h2>
+                <div id="wordFrequency" class="word-frequency">
+                    Start typing to see word frequency...
+                </div>
+            </section>
+
+            <!-- Sentence Table -->
+            <section class="card sentence-table-section">
+                <h2>📋 Sentence Breakdown</h2>
+                <div id="sentenceTable" class="sentence-table-container">
+                    Start typing to see sentence breakdown...
+                </div>
+            </section>
+
+            <!-- Success Criteria Builder -->
+            <section class="card criteria-section">
+                <h2>🎯 Success Criteria</h2>
+                <p class="section-description">Add up to 15 criteria to check your draft against</p>
+                <div class="criteria-input-group">
+                    <input 
+                        type="text" 
+                        id="criterionInput" 
+                        placeholder="Enter a success criterion (e.g., Uses varied sentence structures)"
+                        maxlength="200"
+                    >
+                    <button id="addCriterionBtn" class="btn btn-primary">+ Add</button>
+                </div>
+                <ul id="criteriaList" class="criteria-list"></ul>
+                <button id="analyseBtn" class="btn btn-primary btn-large">
+                    🤖 Check Against Criteria (AI)
+                </button>
+                <div id="analysisLoading" class="loading-state" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Analyzing your draft with AI... This may take a moment.</p>
+                </div>
+            </section>
+
+            <!-- AI Results Section -->
+            <section class="card results-section" id="resultsSection" style="display: none;">
+                <h2>🎓 AI Feedback Results</h2>
+                
+                <!-- Overall Summary -->
+                <div class="summary-box">
+                    <h3>Overall Summary</h3>
+                    <ul id="summaryList" class="summary-list"></ul>
+                </div>
+
+                <!-- Criteria Results -->
+                <div class="criteria-results">
+                    <h3>Detailed Criteria Feedback</h3>
+                    <div id="criteriaResults"></div>
+                </div>
+
+                <div class="results-actions">
+                    <button id="exportFeedbackBtn" class="btn btn-secondary">
+                        📄 Export Feedback as Text
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Built with ❤️ for students | Powered by OpenAI GPT-5-Nano</p>
+            <button id="clearAllBtn" class="btn btn-link">Clear All Data</button>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
